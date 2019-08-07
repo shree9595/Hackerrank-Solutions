@@ -9,10 +9,10 @@ function pad(n, length) {
 
 function processData(input) {
     let count = input.split("\n")[0];
-    let inputs = input.split("\n")[1].split(" ").map((item) => pad(item, 5));
+    let inputs = input.split("\n")[1].split(" ").map((item) => parseFloat(item));
     let sum = inputs.reduce((acc, curr) => parseFloat(acc) + parseFloat(curr));
     let mean = sum / count;
-    let sortedArray = inputs.sort();
+    let sortedArray = inputs.sort(function (a, b) { return a - b });
     let median = count % 2 === 0 ? (parseFloat(sortedArray[count / 2]) + parseFloat(sortedArray[(count / 2) - 1])) / 2 : parseFloat(sortedArray[(count + 1) / 2]);
     let results = [];
     let temp = sortedArray[0];
